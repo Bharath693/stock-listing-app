@@ -1,0 +1,29 @@
+.main{
+    display: flex;
+
+}
+
+.img1Container{
+    width:250px;
+    height:200px;
+    flex: 1;
+    background-color: lightgray;
+    margin: 20px 100px;
+    border-radius: 5px;
+    border: 2px solid lightgray;
+}
+.img1{
+display: flex;
+justify-content: space-around;
+align-items: center;
+padding-top: 30px;
+}
+.img1 img{
+ width: 70px;
+ height: 70px;
+}
+
+.img1Container h3{
+    text-align: center;
+    padding-top: 20px;
+}

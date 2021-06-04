@@ -1,4 +1,8 @@
 import React from 'react'
+import './Home.css'
+import Google from '../Assests/GOOGL.png'
+import Facebook from '../Assests/FB.png'
+import Amazone from '../Assests/AMZN.svg'
 import { connect, useDispatch } from 'react-redux'
 import { Table , Button} from 'reactstrap'
 const View = ({Product}) => {
@@ -6,6 +10,29 @@ const View = ({Product}) => {
     const dispatch = useDispatch()
     return (
         <div>
+            <div className="main">
+            <div className="img1Container">
+                <div className="img1">
+                    <span>GOOGL</span>
+                    <img src={Google}/>
+                </div>
+                <h3>1515 USD</h3>
+            </div>
+            <div className="img1Container">
+                <div className="img1">
+                    <span>GOOGL</span>
+                    <img src={Facebook}/>
+                </div>
+                <h3>1515 USD</h3>
+            </div>
+            <div className="img1Container">
+                <div className="img1">
+                    <span>GOOGL</span>
+                    <img src={Amazone}/>
+                </div>
+                <h3>1515 USD</h3>
+            </div>
+            </div>
             <Table>
                 <thead>
                     <tr style={{paddingLeft:"50%"}}>
@@ -20,19 +47,20 @@ const View = ({Product}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {console.log(Product.cryptoProduct)}
+                    {/* {console.log(Product.cryptoProduct)} */}
                     {Product && Product.cryptoProduct.map((item , index) =>{
+                        // console.log(item.name)
                        return(
                            <>
-                               <tr id={index}>
+                               <tr>
                                    <td>{item.name}</td>
                                    <td>{item.symbol}</td>
                                    <td>{item.market_cap}</td>
-                                   <td><Button color="primary" onClick={() =>dispatch({type:"DELETE_PRODUCT" , id:item.id , product:Product.cryptoProduct})}>DELETE</Button></td>
+                                   <td><Button color="primary" onClick={()=>dispatch({type :"DELETE_PRODUCT", id:item.id , Product})}>DELETE</Button></td>
                                    <td>${item.price}
                                    <td>USD</td>
                                    </td>
-                                </tr>
+                               </tr>
                            </>
                        )
                     })}
