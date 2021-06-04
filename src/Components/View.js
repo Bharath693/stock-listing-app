@@ -55,7 +55,7 @@ const View = ({Product}) => {
                                <tr>
                                    <td>{item.name}</td>
                                    <td>{item.symbol}</td>
-                                   <td>{item.market_cap}</td>
+                                   <td>${item.market_cap}</td>
                                    <td><Button color="primary" onClick={()=>dispatch({type :"DELETE_PRODUCT", id:item.id , Product})}>DELETE</Button></td>
                                    <td>${item.price}
                                    <td>USD</td>

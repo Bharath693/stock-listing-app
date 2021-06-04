@@ -6,6 +6,7 @@ import Facebook from '../Assests/FB.png'
 import Amazone from '../Assests/AMZN.svg'
 import { Table, Input, Button, Card} from 'reactstrap'
 import { connect } from 'react-redux'
+import Search from './Search'
 import { HomeReducer } from '../actions/actions'
 import { useDispatch } from 'react-redux'
 
@@ -20,7 +21,7 @@ const Home = () => {
             .then(result => setData(result))
             .catch(err => err.message)
     }, [])
-
+    
     return (
         <div>
             <div className="main">
@@ -46,11 +47,11 @@ const Home = () => {
                 <h3>3116 USD</h3>
             </div>
             </div>
-            <Table style={{marginTop:"30px"}}>
+            <Table style={{marginTop:"30px", }}>
                 <thead>
                     <tr>
                         <th>Stock details Table</th>
-                        <th><Input placeholder="search by company name" /></th>
+                        <th><Search sendData={data} /></th>        
                     </tr>
                     <tr>
                         <th>COMPANY NAME</th>
@@ -61,6 +62,7 @@ const Home = () => {
                     </tr>
                 </thead>
                 <tbody >
+                    
                     {data && data.map((item, index) => {
                         //    console.log(item)
                         return (
@@ -68,7 +70,7 @@ const Home = () => {
                                 <tr>
                                     <td>{item.name}</td>
                                     <td>{item.symbol}</td>
-                                    <td>{item.market_cap}</td>
+                                    <td>${item.market_cap}</td>
                                     <td><Button color="primary" onClick={() => dispatch({ type: "SAVE_DATA", id: item.id, data })}>Save Data</Button></td>
                                     <td>${item.price}
                                         <td>USD</td>
@@ -77,8 +79,10 @@ const Home = () => {
                             </>
                         )
                     })}
+                    
                 </tbody>
             </Table>
+           
         </div>
     )
 }
