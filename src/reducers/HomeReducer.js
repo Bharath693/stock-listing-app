@@ -13,13 +13,15 @@ export const HomeReducer = (state = initialState , action) => {
         let check = cryptoProduct.find((item) =>item.id === action .id)
 
         if(check){
+            <Button>View</Button>
             return{cryptoProduct :[...cryptoProduct] ,message:"This Company list is already in the  table"}
-        }
-        
+        }else{
+            <Button>Save Data</Button>
             product = action.data.find((items)=>items.id === action.id)
             //    console.log(product)
-                return {cryptoProduct :[product, ...cryptoProduct]}
-        
+
+                return{cryptoProduct :[product, ...cryptoProduct]}
+        }
 
         case "DELETE_PRODUCT":
             const filtered = cryptoProduct.filter(item =>item.id !== action.id)
